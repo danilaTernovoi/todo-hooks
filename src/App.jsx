@@ -7,21 +7,14 @@ import Footer from './components/Footer';
 import { ACTIVE, COMPLETED, EDITING } from './constants';
 
 const App = () => {
-  // state = {
-  //   currentFilter: 'all',
-  //   tasks: [],
-  // };
+  
 
   const [state, setState] = useState({
     currentFilter: 'all',
     tasks: [],
   });
 
-  // componentDidMount() {
-  //   this.setState({
-  //     tasks: JSON.parse(localStorage.getItem('tasks')) || [],
-  //   });
-  // }
+ 
 
   useEffect(() => {
     setState({
@@ -29,32 +22,20 @@ const App = () => {
     });
   }, []);
 
-  // componentDidUpdate() {
-  //   const { tasks } = this.state;
-  //   localStorage.setItem('tasks', JSON.stringify(tasks));
-  // }
+
 
   useEffect(() => {
     const { tasks } = state;
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [state]);
 
-  // getTask = (id) => {
-  //   const { tasks } = this.state;
-  //   return tasks.find((task) => task.id === id);
-  // }
 
   const getTask = (id) => {
     const { tasks } = state;
     return tasks.find((task) => task.id === id);
   };
 
-  // toggleCompleted = (id) => {
-  //   const { tasks } = this.state;
-  //   const toggledTask = tasks.find((task) => task.id === id);
-  //   toggledTask.mod = toggledTask.mod === ACTIVE ? COMPLETED : ACTIVE;
-  //   this.forceUpdate();
-  // };
+
 
   const toggleCompleted = (id) => {
     const { tasks } = state;
@@ -63,12 +44,7 @@ const App = () => {
     setState(prev => ({ ...prev }));
   };
 
-  // toggleEditing = (id) => {
-  //   const { tasks } = this.state;
-  //   const toggledTask = tasks.find((task) => task.id === id);
-  //   toggledTask.mod = toggledTask.mod === ACTIVE ? EDITING : ACTIVE;
-  //   this.forceUpdate();
-  // };
+
 
   const toggleEditing = (id) => {
     const { tasks } = state;
@@ -77,18 +53,7 @@ const App = () => {
     setState(prev => ({ ...prev }));
   };
 
-  // createTask = (desc) => {
-  //   const newTask = {
-  //     desc,
-  //     id: `${Date.now()}-${desc}`,
-  //     mod: ACTIVE,
-  //     timestamp: Date.now(),
-  //   };
 
-  //   this.setState((state) => ({
-  //     tasks: [...state.tasks, newTask],
-  //   }));
-  // };
 
   const createTask = (desc) => {
     const newTask = {
@@ -104,12 +69,7 @@ const App = () => {
     }));
   };
 
-  // updateTasks = (id, newDescription) => {
-  //   const taskToUpdate = this.getTask(id);
-  //   taskToUpdate.desc = newDescription;
-  //   taskToUpdate.mod = ACTIVE;
-  //   this.forceUpdate();
-  // }
+ 
 
 
   const updateTasks = (id, newDescription) => {
@@ -119,11 +79,7 @@ const App = () => {
     setState(prev => ({ ...prev }));
   }
 
-  // deleteTask = (id) => {
-  //   this.setState((state) => ({
-  //     tasks: state.tasks.filter((task) => task.id !== id),
-  //   }));
-  // };
+
 
   const deleteTask = (id) => {
     setState((prev) => ({
@@ -132,11 +88,7 @@ const App = () => {
     }));
   };
 
-  // clearCompleted = () => {
-  //   this.setState((state) => ({
-  //     tasks: state.tasks.filter((task) => task.mod !== COMPLETED),
-  //   }));
-  // };
+
 
   const clearCompleted = () => {
     setState((prev) => ({
